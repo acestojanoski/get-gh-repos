@@ -14,8 +14,8 @@ const query = `
                 ownerAffiliations: OWNER,
                 privacy: PUBLIC,
                 orderBy: {
-	    			field: CREATED_AT,
-	    			direction: DESC
+                    field: CREATED_AT,
+                    direction: DESC
                 },
                 after: $cursor
             ) {
@@ -26,8 +26,8 @@ const query = `
                         description
                         url
                         primaryLanguage {
-	    					name
-	    					color
+                            name
+                            color
                         }
                     }
                 }
