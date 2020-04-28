@@ -39,7 +39,7 @@ const query = `
     }
 `;
 
-module.exports.getRepos = async (cursor) => {
+module.exports.getReposAfterCursor = async (cursor) => {
 	const options = {
 		method: 'post',
 		body: JSON.stringify({
@@ -55,5 +55,5 @@ module.exports.getRepos = async (cursor) => {
 	};
 
 	const {body} = await got(API_URL, options);
-	return body.data.user.repositories;
+	return body;
 };

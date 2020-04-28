@@ -6,26 +6,51 @@ module.exports = async (req, res) => {
 		process.env.ACCESS_ALLOW_ORIGIN || '*'
 	);
 
+	res.setHeader('content-type', 'application/json');
+
 	try {
-		const response = await repository.getRepos(req.query.cursor);
+		const githubResponse = await repository.getReposAfterCursor(
+			req.query.cursor
+		);
 
-		const repositories = response.edges.map((item) => ({
-			...item.node,
-			cursor: item.cursor,
-		}));
+		console.info(
+			'Github API response: ',
+			JSON.stringify(githubResponse, null, '\t')
+		);
 
-		const preparedResponse = {
-			repositories,
-			pageInfo: response.pageInfo,
-		};
+		if (
+			githubResponse &&
+			githubResponse.data &&
+			githubResponse.data.user &&
+			githubResponse.data.user.repositories
+		) {
+			const repositories = githubResponse.data.user.repositories;
 
-		res.setHeader('content-type', 'application/json');
-		res.end(JSON.stringify(preparedResponse));
+			const mappedResponse = {
+				repositories: [],
+				pageInfo: repositories.pageInfo || {},
+			};
+
+			mappedResponse.repositories =
+				repositories.edges &&
+				repositories.edges.map((item) => ({
+					...item.node,
+					cursor: item.cursor,
+				}));
+
+			console.info(
+				'Response: ',
+				JSON.stringify(mappedResponse, null, '\t')
+			);
+
+			return res.end(JSON.stringify(mappedResponse));
+		}
+
+		res.statusCode = 404;
+		res.end(JSON.stringify({message: 'Not found'}));
 	} catch (error) {
-		console.error(error);
-
+		console.error('Error: ', error);
 		res.statusCode = 500;
-		res.setHeader('content-type', 'application/json');
 		res.end(JSON.stringify({message: 'Internal server error'}));
 	}
 };

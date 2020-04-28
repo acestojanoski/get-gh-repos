@@ -18,7 +18,8 @@
     "prettier": true,
     "rules": {
       "unicorn/prevent-abbreviations": "off",
-      "no-unused-vars": "warn"
+      "no-unused-vars": "warn",
+      "unicorn/no-console-spaces": "off"
     }
   }
 }
