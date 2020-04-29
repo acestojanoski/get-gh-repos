@@ -33,6 +33,8 @@ const query = `
                 }
                 pageInfo {
                     hasNextPage
+                    startCursor
+                    endCursor
                 }
             }
         }
