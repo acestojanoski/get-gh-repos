@@ -114,7 +114,6 @@ dist
 .yarn/build-state.yml
 .pnp.*
 
-# custom
 .now
 
-.now
+.vercel

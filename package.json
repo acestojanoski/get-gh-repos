@@ -1,25 +1,25 @@
 {
-  "name": "get-gh-repos",
-  "version": "1.0.0",
-  "description": "Microservice to get my github repositories using pagination",
-  "main": "index.js",
-  "scripts": {
-    "xo": "xo"
-  },
-  "author": "Aleksandar Stojanoski",
-  "license": "MIT",
-  "dependencies": {
-    "got": "^11.0.2"
-  },
-  "devDependencies": {
-    "xo": "^0.30.0"
-  },
-  "xo": {
-    "prettier": true,
-    "rules": {
-      "unicorn/prevent-abbreviations": "off",
-      "no-unused-vars": "warn",
-      "unicorn/no-console-spaces": "off"
-    }
-  }
+	"name": "get-gh-repos",
+	"version": "1.0.0",
+	"description": "Microservice to get my github repositories using pagination",
+	"main": "index.js",
+	"scripts": {
+		"xo": "xo"
+	},
+	"author": "Aleksandar Stojanoski",
+	"license": "MIT",
+	"dependencies": {
+		"got": "^11.5.1"
+	},
+	"devDependencies": {
+		"xo": "^0.32.1"
+	},
+	"xo": {
+		"prettier": true,
+		"rules": {
+			"unicorn/prevent-abbreviations": "off",
+			"no-unused-vars": "warn",
+			"unicorn/no-console-spaces": "off"
+		}
+	}
 }

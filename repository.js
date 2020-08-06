@@ -8,7 +8,7 @@ const query = `
     query ($cursor: String) {
         user(login: "${GITHUB_USERNAME}") {
             repositories(
-                first: ${MAX_REPOS || 5},
+                first: ${MAX_REPOS || 10},
                 isFork: false,
                 isLocked: false,
                 ownerAffiliations: OWNER,
